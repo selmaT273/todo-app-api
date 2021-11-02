@@ -11,10 +11,9 @@ app.use(cors());
 // app.use(todoRoutes);
 
 const uri: string = 'mongodb://localhost:27017/todo';
-const ConnectOptions = { bufferCommands: false, autoCreate: true, autoIndex: false };
 
 mongoose
-  .connect(uri, ConnectOptions)
+  .connect(uri)
   .then(() => 
     app.listen(PORT, () =>
       console.log('server is running')
@@ -23,3 +22,6 @@ mongoose
   .catch(err => {
     throw err;
   });
+
+  const db = mongoose.connection;
+  db.on('error', console.error.bind(console, 'connection error:'));
