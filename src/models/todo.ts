@@ -16,6 +16,10 @@ const todoSchema: Schema = new Schema(
       type: Boolean,
       required: true,
     },
+    dueDate: {
+      type: Date,
+      required: true,
+    }
   },
   { timestamps: true }
 )
